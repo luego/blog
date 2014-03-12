@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -76,7 +77,7 @@ class PostsController < ApplicationController
   end
 
   def tag_list
-    tags.map(&:name).join(", ")
+    tags.map(:name).join(", ")
   end
 
   def tag_list=(names)
@@ -93,6 +94,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :user_id, :category_id)
+      params.require(:post).permit(:title, :content, :user_id, :category_id, :tag_list)
     end
 end

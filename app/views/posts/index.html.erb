@@ -19,7 +19,7 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
-        <td><%= post.user %></td>
+        <td><%= post.user.name %></td>
         <td><%= post.category %></td>
         <td>Tags: <%= post.tags.map(:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
         <td><%= link_to 'Show', post %></td>

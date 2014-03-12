@@ -1,2 +1,24 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% @posts.each do |post| %>
+<article>
+  <h3>
+    <a href="#"><%= post.title %></a>
+  </h3>
+  <h6>
+    Written by
+    <a href="#"><%= post.user.name %></a>
+    <%= post.created_at %><!-- on August 12, 2012.-->
+  </h6>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <p>
+        <%= post.content %>
+      </p>
+    </div>
+    <div class="large-6 columns">
+      <img src="http://placehold.it/400x240&text=[img]" />
+    </div>
+  </div>
+</article>
+<hr />
+<% end %>

@@ -1,22 +1,87 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Blog" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Blog" %>">
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%# Modernizr is required for Zurb Foundation %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Blog" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Blog" %>
+  ">
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" =>
+  true %>
+  <%# Modernizr is required for Zurb Foundation %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" =>
+  true %>
+  <%= csrf_meta_tags %></head>
+<body>
+
+  <header>
+    <%= render 'layouts/navigation' %></header>
+  <!-- Main Page Content and Sidebar -->
+  <div class="row">
+    <!-- Main Blog Content -->
     <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
-  </body>
+      <%= render 'layouts/messages' %>
+      <div class="large-9 columns" role="content">
+        <%= yield %></div>
+      <!-- End Main Content -->
+      <!-- Sidebar -->
+      <aside class="large-3 columns">
+        <h5>Categories</h5>
+        <ul class="side-nav">
+          <li>
+            <a href="#">News</a>
+          </li>
+          <li>
+            <a href="#">Code</a>
+          </li>
+          <li>
+            <a href="#">Design</a>
+          </li>
+          <li>
+            <a href="#">Fun</a>
+          </li>
+          <li>
+            <a href="#">Weasels</a>
+          </li>
+        </ul>
+
+        <div class="panel">
+          <h5>Featured</h5>
+          <p>
+            Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.
+          </p>
+          <a href="#">Read More &rarr;</a>
+        </div>
+      </aside>
+      <!-- End Sidebar --> </main>
+
+  </div>
+  <!-- Footer -->
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>&copy; Copyright no one at all. Go to town.</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li>
+              <a href="#">Link 1</a>
+            </li>
+            <li>
+              <a href="#">Link 2</a>
+            </li>
+            <li>
+              <a href="#">Link 3</a>
+            </li>
+            <li>
+              <a href="#">Link 4</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>
