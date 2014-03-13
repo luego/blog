@@ -10,8 +10,7 @@
   </h3>
   <h6>
     Written by
-    <a href="#"><%= post.user.name %></a>
-    <%= post.created_at %><!-- on August 12, 2012.-->
+    <a href="#"><%= post.user.name %></a> on <%= post.created_at.to_s(:long) %><!-- on August 12, 2012.-->
   </h6>
 
   <div class="row">
