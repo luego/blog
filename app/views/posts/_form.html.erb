@@ -20,18 +20,17 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
-    <%= f.label :user %><br>
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.select :category_id, options_for_select(@category) %>
   </div>
   <div class="field">
     <%= f.label :tag_list, "Tags (separated by commas)" %><br />
     <%= f.text_field :tag_list %>
   </div>
+  <% if user_signed_in? %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, class: "button round" %>
   </div>
 <% end %>

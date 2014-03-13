@@ -21,17 +21,19 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @category = Category.all.map { |user| [user.name, user.id] }
   end
 
   # GET /posts/1/edit
   def edit
+    @category = Category.all.map { |user| [user.name, user.id] }
   end
 
   # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    @category = Category.all.map { |user| [user.name, user.id] }
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -46,6 +48,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    @category = Category.all.map { |user| [user.name, user.id] }
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -64,25 +67,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :no_content }
-    end
-  end
-
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).posts
-  end
-
-  def self.tag_counts
-    Tag.select("tags.*, count(taggings.tag_id) as count").
-      joins(:taggings).group("taggings.tag_id")
-  end
-
-  def tag_list
-    tags.map(:name).join(", ")
-  end
-
-  def tag_list=(names)
-    self.tags = names.split(",").map do |n|
-      Tag.where(name: n.strip).first_or_create!
     end
   end
 

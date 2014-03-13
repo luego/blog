@@ -10,3 +10,6 @@ newuser = User.new({:name=>'Luis Edo',:username => 'luego', :email => 'luego1986
           :password_confirmation => 'luego+312543',:admin => true})
 #newuser.skip_confirmation!
 newuser.save
+Category.create({:name => 'php'})
+Category.create({:name => 'ruby'})
+Category.create({:name => 'python'})

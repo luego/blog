@@ -5,7 +5,6 @@ class CreatePosts < ActiveRecord::Migration
       t.text :content
       t.references :user, index: true
       t.references :category, index: true
-      t.string :tag_list
 
       t.timestamps
     end
