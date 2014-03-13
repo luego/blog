@@ -1,8 +1,12 @@
 class User < ActiveRecord::Base
-  before_create :create_login
+  #before_create :create_login
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessor :login
-
+=begin
   def login=(login)
     @login = login
   end
@@ -10,11 +14,7 @@ class User < ActiveRecord::Base
   def login
     @login || self.username || self.email
   end
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+=end
 
   validates :username, :uniqueness => { :case_sensitive => false }
 
@@ -36,8 +36,9 @@ class User < ActiveRecord::Base
       self.login = self.email
     end
   end
-
+=begin
   def self.find_for_database_authentication(conditions)
     self.where(:login => conditions[:email]).first || self.where(:email => conditions[:email]).first
   end
+=end
 end
