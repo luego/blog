@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'foundation-rails'
 
-# gem 'activerecord-tableless'
+gem 'activerecord-tableless'
 
 gem 'figaro'
 
@@ -41,6 +41,8 @@ gem 'devise'
 
 gem 'acts-as-taggable-on'
 
+gem 'google_drive'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -48,7 +50,7 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'sqlite3'
