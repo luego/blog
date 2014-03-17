@@ -20,18 +20,31 @@
   <%= @post.category.name %>
 </p>
 
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.user.name %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.content %>
+  </p>
+<% end %>
+
 <h2>Add a comment:</h2>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
+    <p>
+      <%= f.label :content %><br />
+      <%= f.text_area :content, rows: 10 %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
   <% end %>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
 <% end %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
