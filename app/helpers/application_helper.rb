@@ -6,4 +6,10 @@ module ApplicationHelper
         yield(tag, classes[index.round])
       end
     end
+    def build_categories
+      cates = Category.all
+      cates.each do |c|
+        yield(c,c.name)
+      end
+    end
 end

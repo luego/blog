@@ -3,9 +3,7 @@
           link_to 'New Post', new_post_path
           %>
 <% end %>
-<% @posts.each do |post|
-  conta = post.comments.count()
- %>
+<% @posts.each do |post| %>
 <article>
   <h3>
     <a href="#"><%= post.title %></a>
@@ -24,7 +22,7 @@
     <div class="large-6 columns">
       <img src="http://placehold.it/400x240&text=[img]" />
     </div>
-    <p><%= raw link_to 'Comentarios(#{conta})', post %> </p>
+    <p><%= link_to "Comments( #{post.comments.count()} )", post %> </p>
   </div>
 </article>
 <hr />

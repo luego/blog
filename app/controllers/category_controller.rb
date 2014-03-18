@@ -1,7 +1,11 @@
 class CategoryController < ApplicationController
-  before_filter :authenticate_user!, only: [:new]
+  before_filter :authenticate_user!, only: [:new,:show]
   before_action :set_post, only: [:new]
   def new
+
+  end
+
+  def show
 
   end
 
